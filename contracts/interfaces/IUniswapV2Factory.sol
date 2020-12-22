@@ -14,4 +14,6 @@ interface IUniswapV2Factory {
 
     function setFeeTo(address) external;
     function setFeeToSetter(address) external;
+    //add by dev@ok0x.com
+    function emitReserveChange(address token0,address token1,uint112 reserve0, uint112 reserve1) external;
 }
