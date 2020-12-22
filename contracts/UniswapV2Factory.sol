@@ -12,7 +12,7 @@ contract UniswapV2Factory is IUniswapV2Factory {
 
     event PairCreated(address indexed token0, address indexed token1, address pair, uint);
     //add by dev@ok0x.com
-    event TokenReserveChange(address indexed token0, address indexed token1,uint112 reserve0, uint112 reserve1);
+    event TokenReserveChange(address indexed pair,address token0, address token1,uint112 reserve0, uint112 reserve1);
 
     constructor(address _feeToSetter) public {
         feeToSetter = _feeToSetter;
@@ -54,6 +54,6 @@ contract UniswapV2Factory is IUniswapV2Factory {
         address pair= getPair[token0][token1];
         require(pair != address(0), 'UniswapV2: PAIR NOT EXISTS'); // single check is sufficient
         require(msg.sender == pair, 'UniswapV2: FORBIDDEN'); //safe check caller
-        emit TokenReserveChange(token0,token1,reserve0,reserve1);
+        emit TokenReserveChange(pair,token0,token1,reserve0,reserve1);
     }
 }
